@@ -9,7 +9,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home
     },
@@ -22,19 +22,19 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/movies',
+      path: '/',
       name: 'index',
       component: () => import('./views/index.vue')
+    },
+    {
+      path: '/movies/new',
+      name: 'new',
+      component: () => import('./views/new.vue')
     },
     {
       path: '/movies/:id',
       name: 'show',
       component: () => import('./views/show.vue')
-    },
-    {
-      path: '/new',
-      name: 'new',
-      component: () => import('./views/new.vue')
     },
     {
       path: '/movies/:id/edit',

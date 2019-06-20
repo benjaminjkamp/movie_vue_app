@@ -1,10 +1,7 @@
 <template>
   <div class="home">
-    
-    <h1>{{ title }}</h1>
-    <h2>Click Index Above ^</h2>
 
-   <!--  <h2>Add Movie</h2>
+    <h2>Add Movie</h2>
     Title: <input type="text" v-model="newMovieTitle"><br>
     Director: <input type="text" v-model="newMovieDirector"><br>
     Year: <input type="number" v-model="newMovieYear"><br>
@@ -36,7 +33,7 @@
         
       </div>
       <button v-on:click="showMovie(movie)">Show Details</button>
-    </div> -->
+    </div>
 
   </div>
 </template>

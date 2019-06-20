@@ -1,15 +1,16 @@
 <template>
   <div class="index">
-    <h1>{{ title }}</h1>
     <br>
-    <router-link to="/new">Add Movie</router-link>
-    <div v-for="movie in movies">
-      <br><br>
-      <h2> {{ movie.title }} </h2>
-      <!-- <div v-on:click="showMovie(movie)"> -->
-      <router-link :to="{ name: 'show', params: {id: movie.id} }">Show Details</router-link>
-    <!-- </div> -->
-      <!-- <button v-on:click="showMovie(movie)">Show Movie Info</button> -->
+    <div class="container-fluid pt70 pb70">
+      <div id="fh5co-projects-feed" class="fh5co-projects-feed clearfix masonry">
+        <div v-for="movie in movies" class="fh5co-project masonry-brick">
+          <router-link :to="{ name: 'show', params: {id: movie.id} }">
+            <img src="https://irs.www.warnerbros.com/keyart-jpeg/inception_keyart.jpg">
+            <h2>{{movie.title}}</h2>
+          </router-link>
+        </div>        
+      </div>
+      <!--END .fh5co-projects-feed-->
     </div>
   </div>
 </template>
@@ -22,13 +23,13 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      title: "Movies",
       movies: [],
       currentMovie: {}
     };
   },
   created: function() {
     axios.get("/api/movies").then(response => {
+      console.log(response.data);
       this.movies = response.data;
     })
   },
