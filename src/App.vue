@@ -10,6 +10,14 @@
           <ul>
             <li><router-link to="/">Movies</router-link></li>
             <li><router-link to="/movies/new">Add Movie</router-link></li>
+            
+            <span v-if="isLoggedIn()">
+              <li><router-link to="/logout">Log Out</router-link></li>
+            </span>
+            <span v-else>
+              <li><router-link to="/signup">Sign Up</router-link></li>
+              <li><router-link to="/login">Log In</router-link></li>
+            </span>
           </ul>
         </nav>
       </div>
@@ -36,3 +44,18 @@
 <style>
 
 </style>
+<script>
+import axios from "axios";
+export default {
+  data: function() {
+    return {
+    };
+  },
+  created: function() {},
+  methods: {
+    isLoggedIn: function() {
+      return localStorage.getItem('jwt');
+    }
+  }
+};
+</script>

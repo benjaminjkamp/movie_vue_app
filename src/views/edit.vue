@@ -50,7 +50,7 @@ export default {
     deleteMovie: function(movie){
       axios.delete("/api/movies/" + this.$route.params.id).then(response => {
         console.log(response.data);
-        window.location.pathname = ("/movies");
+        window.location.pathname = ("/");
       })
     }
 

@@ -36,7 +36,7 @@ export default {
       }
       axios.post("/api/movies", params).then(response => {
         console.log(response.data);
-        window.location.pathname = ("/movies");
+        window.location.pathname = ("/");
       })
     }
   }
