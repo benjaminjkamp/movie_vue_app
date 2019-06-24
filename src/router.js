@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Signup from './views/Users/Signup.vue'
 import Login from './views/Users/Login.vue'
 import Logout from './views/Users/Logout.vue'
+import ActorsIndex from './views/Actors/Index.vue'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/actors',
+      name: 'actors-index',
+      component: ActorsIndex
     },
     {
       path: '/about',

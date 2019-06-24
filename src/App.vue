@@ -8,9 +8,10 @@
         </div>
         <nav>
           <ul>
+            <li><router-link to="/actors">Actors</router-link></li>
             <li><router-link to="/">Movies</router-link></li>
             <li><router-link to="/movies/new">Add Movie</router-link></li>
-            
+
             <span v-if="isLoggedIn()">
               <li><router-link to="/logout">Log Out</router-link></li>
             </span>

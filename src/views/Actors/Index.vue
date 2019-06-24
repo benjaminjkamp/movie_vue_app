@@ -1,24 +1,23 @@
 <template>
-  <div class="index">
+  <div class="actors-index">
 
     <br>
+    {{actors}}
     <div class="container-fluid pt70 pb70">
       <datalist id="names">
-        <option v-for="movie in movies">{{movie.title}}</option>
+        <option v-for="actor in actors">{{actor.first_name}}</option>
       </datalist>
       <div id="fh5co-projects-feed" class="fh5co-projects-feed clearfix masonry">
-        Search by Title: <input v-model="titleFilter" list="names"><br><br>
+        Search by Name: <input v-model="nameFilter" list="names"><br><br>
         <div>
-          <button v-on:click="sortByAttribute('title')">Sort Alphabetically</button>
-          <button v-on:click="sortByAttribute('director')">Sort by Director</button>
-          <button v-on:click="sortByAttribute('year')">Sort by Year</button>
+          <button v-on:click="sortByAttribute('first_name')">Sort Alphabetically</button>
+          <button v-on:click="sortByAttribute('gender')">Sort by Gender</button>
+          <button v-on:click="sortByAttribute('age')">Sort by Age</button>
           
         </div>
-        <div v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), sortAttribute)" class="fh5co-project masonry-brick">
-          <router-link :to="{ name: 'show', params: {id: movie.id} }">
+        <div v-for="actor in orderBy(filterBy(actors, nameFilter, 'first_name'), sortAttribute)" class="fh5co-project masonry-brick">
             <img src="https://irs.www.warnerbros.com/keyart-jpeg/inception_keyart.jpg">
-            <h2>{{movie.title}}</h2>
-          </router-link>
+            <h3>{{actor.first_name}} {{actor.last_name}}</h3>
         </div>        
       </div>
       <!--END .fh5co-projects-feed-->
@@ -38,16 +37,16 @@ export default {
   mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      movies: [],
-      currentMovie: {},
-      titleFilter: "",
-      sortAttribute: "title"
+      actors: [],
+      currentActor: {},
+      nameFilter: "",
+      sortAttribute: "last_name"
     };
   },
   created: function() {
-    axios.get("/api/movies").then(response => {
+    axios.get("/api/actors").then(response => {
       console.log(response.data);
-      this.movies = response.data;
+      this.actors = response.data;
     })
   },
   methods: {
